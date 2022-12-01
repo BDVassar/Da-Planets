@@ -5,5 +5,10 @@ export const GalaxySchema = new Schema({
   stars: { type: Number, required: true }
 },
   { timestamps: true, toJSON: { virtuals: true } }
-) 
+)
 
+GalaxySchema.virtual('Planet', {
+  localField: '_id',
+  ref: 'Planet',
+  foreignField: 'galaxyId',
+})
